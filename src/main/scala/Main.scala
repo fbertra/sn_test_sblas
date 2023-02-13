@@ -91,7 +91,7 @@ class Matrix private (rows: Int, cols: Int) (implicit zone: Zone) {
   override def toString () = {
     val sb = new StringBuffer (100)
 
-    sb.append (s" $rows x $cols [\n")
+    sb.append (s"$rows x $cols [\n")
     for (i <- 0 until rows) {
       sb.append ("  ")
       for (j <- 0 until cols) {
@@ -112,9 +112,9 @@ class Matrix private (rows: Int, cols: Int) (implicit zone: Zone) {
     val M = this.rows
     val N = other._cols
     val K = this.cols
-    val lda = this.rows
-    val ldb = this.cols // == other._rows
-    val ldc = this.rows
+    val lda = this.cols
+    val ldb = other._cols 
+    val ldc = other._cols
 
     val order = blasEnums.CblasRowMajor
     val no_transpose = blasEnums.CblasNoTrans 
